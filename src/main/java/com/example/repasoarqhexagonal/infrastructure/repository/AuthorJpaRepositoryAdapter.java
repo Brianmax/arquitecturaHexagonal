@@ -54,6 +54,10 @@ public class AuthorJpaRepositoryAdapter implements AuthorOut {
 
     @Override
     public void deleteAuthor(Long id) {
-
+        Optional<AuthorEntity> author = authorJpaRepository.findById(id);
+        if(author.isPresent())
+        {
+            authorJpaRepository.deleteById(id);
+        }
     }
 }
